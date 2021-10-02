@@ -22,9 +22,9 @@ def index():
 
     if request.method == 'POST':
         time_sheet.date_str = request.form.get("current_date_str")
-    else:
-        current_date = datetime.now()
-        time_sheet.date_str = current_date.strftime("%Y-%m-%d")
+    #else:
+    #    current_date = datetime.now()
+    #    time_sheet.date_str = current_date.strftime("%Y-%m-%d")
      
     registration_table = time_sheet.query_date(time_sheet.date_str)
 
