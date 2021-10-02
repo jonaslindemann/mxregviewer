@@ -1,0 +1,14 @@
+[Unit]
+Description=MX Registration viewer
+After=network.target
+
+[Service]
+ExecStart=/home/rocky/Development/mxregviewer/regviewer-web.sh
+WorkingDirectory=/home/rocky/Development/regviewer
+StandardOutput=inherit
+StandardError=inherit
+Restart=always
+User=rocky
+
+[Install]
+WantedBy=multi-user.target

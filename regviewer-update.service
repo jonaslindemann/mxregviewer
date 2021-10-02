@@ -1,0 +1,14 @@
+[Unit]
+Description=MX Registration updater
+After=network.target
+
+[Service]
+ExecStart=/home/rocky/Development/regviewer/regviewer-update.sh
+WorkingDirectory=/home/rocky/Development/regviewer
+StandardOutput=inherit
+StandardError=inherit
+Restart=always
+User=rocky
+
+[Install]
+WantedBy=multi-user.target
