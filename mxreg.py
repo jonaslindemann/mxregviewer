@@ -5,7 +5,7 @@ from tabulate import tabulate
 
 import configparser as cp
 
-import json, os, sys
+import json, os, sys, time
 
 import gspread
 
@@ -43,11 +43,27 @@ class TimeSheet:
         
         print("Opening Sheet...")
         self.sheet = self.gc.open(self.gsheet_document)
-        
+      
         print("Getting worksheet...")
         self.worksheet = self.sheet.sheet1
 
     def update(self):
+        print("Checking for sheet update time...")
+        updated = self.sheet.lastUpdateTime
+        last_update = ""
+        
+        with open("/var/lib/mxreg/mxreg.stamp", "r") as stamp_file:
+            last_update = stamp_file.read().strip()
+
+        if last_update == updated:
+            print("No update required.")
+            return
+
+        print("Sheet updated. Remember update time...")
+
+        with open("/var/lib/mxreg/mxreg.stamp", "w") as stamp_file:
+            stamp_file.write(updated.strip())
+
         print("Getting all records...")
         db = self.worksheet.get_all_records()
 
