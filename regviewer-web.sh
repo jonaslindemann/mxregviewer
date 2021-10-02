@@ -1,4 +1,6 @@
 #!/bin/sh
 export FLASK_ENV=production
-export FLASK_APP=/home/rocky/Development/regviewer/regviewer.py
-/usr/local/bin/flask run --host=0.0.0.0
+export FLASK_APP=/home/pi/Development/mxregviewer/regviewer.py
+export FLASK_CMD=/usr/bin/flask
+
+$FLASK_CMD run --host=0.0.0.0

@@ -8,12 +8,13 @@ if __name__ == "__main__":
 
     print("Connecting to time sheet...")
     time_sheet = mxreg.TimeSheet()
-    time_sheet.connect()
 
     while True:
-        print("Updating data...")
+        print("--- Updating data ---")
+        time_sheet.connect()
         time_sheet.update()
-        print("Sleeping...")
-        time.sleep(60)
+        print("--- Sleeping ---")
+        time.sleep(10)
+
 
 
